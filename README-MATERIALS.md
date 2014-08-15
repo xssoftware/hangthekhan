@@ -1,3 +1,7 @@
+# IDE
+* ATOM - https://atom.io/
+* Sublime Text 3 - http://www.sublimetext.com/3
+
 # Tutorials
 * Rails For Zombies - http://railsforzombies.org/
 
