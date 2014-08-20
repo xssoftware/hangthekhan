@@ -2,6 +2,10 @@
 * ATOM - https://atom.io/
 * Sublime Text 3 - http://www.sublimetext.com/3
 
+# Installer
+* Ruby - http://rubyinstaller.org/downloads/
+* Rails - in the console type: gem install rails
+
 # Tutorials
 * Rails For Zombies - http://railsforzombies.org/
 
