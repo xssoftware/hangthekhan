@@ -8,6 +8,7 @@
 
 # Tutorials
 * Rails For Zombies - http://railsforzombies.org/
+* Installing Ruby on Rails Ubuntu 12.04 - https://www.youtube.com/watch?v=poT5WBxuKpg
 
 # Gems
 * Devise (Login) - https://github.com/plataformatec/devise
