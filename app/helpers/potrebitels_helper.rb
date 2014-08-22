@@ -1,0 +1,2 @@
+module PotrebitelsHelper
+end

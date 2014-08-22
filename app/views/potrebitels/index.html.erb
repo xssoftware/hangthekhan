@@ -1,0 +1,41 @@
+<h1>Listing potrebitels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Login</th>
+      <th>Password</th>
+      <th>Email</th>
+      <th>Win</th>
+      <th>Lost</th>
+      <th>Success cat</th>
+      <th>Failure cat</th>
+      <th>Time online</th>
+      <th>Reiting pos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @potrebitels.each do |potrebitel| %>
+      <tr>
+        <td><%= potrebitel.login %></td>
+        <td><%= potrebitel.password %></td>
+        <td><%= potrebitel.email %></td>
+        <td><%= potrebitel.win %></td>
+        <td><%= potrebitel.lost %></td>
+        <td><%= potrebitel.success_cat_id %></td>
+        <td><%= potrebitel.failure_cat_id %></td>
+        <td><%= potrebitel.time_online %></td>
+        <td><%= potrebitel.reiting_pos %></td>
+        <td><%= link_to 'Show', potrebitel %></td>
+        <td><%= link_to 'Edit', edit_potrebitel_path(potrebitel) %></td>
+        <td><%= link_to 'Destroy', potrebitel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Potrebitel', new_potrebitel_path %>
