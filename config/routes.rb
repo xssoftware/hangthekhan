@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root :to => "welcome#index"
 
+  resources :games
+
   resources :potrebitels
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,52 @@
+<%= form_for @game, :html => { :class => "form-horizontal game" } do |f| %>
+
+    <% if @game.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @game.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :user1_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user1_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@game[:user1_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :user2_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user2_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@game[:user2_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :status, :class => 'form-control' %>
+    </div>
+    <%= error_span(@game[:status]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :word_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :word_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@game[:word_id]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            games_path, :class => 'btn btn-default' %>
+
+<% end %>
