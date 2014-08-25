@@ -51,7 +51,8 @@
             <li><%= link_to "Link1", "/path1"  %></li>
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
-          </ul>
+            <li><%= link_to "(#{current_user.email}) Sign out ", '/users/sign_out', :method => :delete if current_user %></li>
+          </div>
         </div>
       </div>
     </div>
