@@ -7,6 +7,12 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
+  # do not use this method, create a new one
+  def my_index
+    @games1 = current_user.created_games
+    @games2 = current_user.played_games
+  end
+
   # GET /games/1
   # GET /games/1.json
   def show
