@@ -48,8 +48,8 @@
         <a class="navbar-brand" href="#">My</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
+            <li><%= link_to "Home", "http://localhost:3000/"  %></li>
             <li><%= link_to "Games", "/games"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
             <li><%= link_to "(#{current_user.email}) Sign out ", '/users/sign_out', :method => :delete if current_user %></li>
           </div>
