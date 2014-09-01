@@ -4,4 +4,5 @@ class Game < ActiveRecord::Base
   belongs_to :word
 
   has_many :moves, dependent: :destroy
+  @status = status
 end
