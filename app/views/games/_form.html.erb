@@ -29,20 +29,7 @@
     </div>
     <%= error_span(@game[:user2_id]) %>
   </div>
-  <div class="control-group">
-    <%= f.label :status, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :status, :class => 'form-control' %>
-    </div>
-    <%= error_span(@game[:status]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :word_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :word_id, :class => 'form-control' %>
-    </div>
-    <%= error_span(@game[:word_id]) %>
-  </div>
+  
 
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
