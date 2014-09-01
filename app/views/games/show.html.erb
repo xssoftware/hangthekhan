@@ -8,6 +8,10 @@
   <dd><%= @game.user1_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user2_id) %>:</strong></dt>
   <dd><%= @game.user2_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @game.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:word_id) %>:</strong></dt>
+  <dd><%= @game.word_id %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
