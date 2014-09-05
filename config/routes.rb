@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :statistics
+
   resources :lobbies
 
   devise_for :users
