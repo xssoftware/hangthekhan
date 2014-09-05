@@ -1,7 +1,8 @@
 class CreateStatistics < ActiveRecord::Migration
   def change
     create_table :statistics do |t|
-      t.games :ranking
+      t.string :user
+      t.integer :gameswon
 
       t.timestamps
     end

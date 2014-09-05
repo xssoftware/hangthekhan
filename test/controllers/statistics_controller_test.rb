@@ -18,7 +18,7 @@ class StatisticsControllerTest < ActionController::TestCase
 
   test "should create statistic" do
     assert_difference('Statistic.count') do
-      post :create, statistic: { ranking: @statistic.ranking }
+      post :create, statistic: { gameswon: @statistic.gameswon, user: @statistic.user }
     end
 
     assert_redirected_to statistic_path(assigns(:statistic))
@@ -35,7 +35,7 @@ class StatisticsControllerTest < ActionController::TestCase
   end
 
   test "should update statistic" do
-    patch :update, id: @statistic, statistic: { ranking: @statistic.ranking }
+    patch :update, id: @statistic, statistic: { gameswon: @statistic.gameswon, user: @statistic.user }
     assert_redirected_to statistic_path(assigns(:statistic))
   end
 
