@@ -28,7 +28,7 @@
             <td><%= game.status %></td>
             <td><%= game.moves.count %></td>
             <td>
-              <%= link_to "", game_url(game), :metdod => :delete, :class => 'btn btn-danger icon-remove' %>
+              <%= link_to "", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
             </td>
           </tr>
         <% end %>
@@ -45,6 +45,7 @@
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
           <th><%= model_class.human_attribute_name(:user1) %></th>
           <th><%= model_class.human_attribute_name(:user2) %></th>
           <th><%= model_class.human_attribute_name(:word) %></th>
@@ -56,6 +57,7 @@
       <tbody>
         <% @played.each do |game| %>
           <tr>
+            <td><%= link_to game.id, game_url(game) %></td>
             <td><%= game.user1.email %></td>
             <td><%= game.user2.email if game.user2 %></td>
             <td><%= "***" %></td>

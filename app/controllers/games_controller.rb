@@ -30,7 +30,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to lobby_index_url, notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -56,25 +56,34 @@ class GamesController < ApplicationController
   # DELETE /games/1
   # DELETE /games/1.json
   def destroy
-    @game.destroy
+    if @game.user1 == current_user
+      @game.destroy
+      @notice = 'Game was successfully destroyed.'
+    else
+      @notice = 'You cannot destroy other user\'s game.'
+    end
+
     respond_to do |format|
-      format.html { redirect_to games_url, notice: 'Game was successfully destroyed.' }
+      format.html { redirect_to lobby_index_url, notice: @notice}
       format.json { head :no_content }
     end
   end
 
   def join
-    return unless @game.user2.nil?
-    return if @game.user2 == current_user
-
-    @game.user2 = current_user
+    if @game.user2
+      @notice = 'Game cannot be accepted.'
+    elsif @game.user1 == current_user
+      @notice = 'Game cannot be accepted.'
+    else
+      @game.user2 = current_user
+      @game.save
+      @notice = 'Game accepted.'
+    end
 
     respond_to do |format|
-      if @game.save
-        format.html { redirect_to lobby_index_url, notice: 'Game accepted.' }
-      else
-        format.html { redirect_to lobby_index_url, notice: 'Game could not accept.' }
-      end
+      format.html {
+        redirect_to lobby_index_url, notice: @notice
+      }
     end
   end
 
