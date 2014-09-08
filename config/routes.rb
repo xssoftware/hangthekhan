@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'lobby' => 'lobby#index', as: :lobby_index
   get 'games/:id/join' => 'games#join', as: :game_join
-  post 'games/:id/make_move' => 'games#make_move'
+  get 'games/:id/make_move' => 'games#make_move'
 
   resources :statistics
 

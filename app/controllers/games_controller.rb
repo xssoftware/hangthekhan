@@ -88,11 +88,11 @@ class GamesController < ApplicationController
   end
 
   def make_move
-    if @game.user2 != current_user
-      @notice = 'Cannot make moves.'
-    else
-      @move = @game.moves.create(char: params[:char])
+    @res = @game.make_move(current_user, params[:char])
+    if @res
       @notice = 'Move made.'
+    else
+      @notice = 'Cannot make moves.'
     end
 
     respond_to do |format|

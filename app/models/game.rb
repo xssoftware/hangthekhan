@@ -6,4 +6,9 @@ class Game < ActiveRecord::Base
 
   has_many :moves, dependent: :destroy
 
+  def make_move(user, char)
+    return if user != user2
+    return moves.create(char: char)
+  end
+
 end
