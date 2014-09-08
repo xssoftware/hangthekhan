@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy, :join]
+  before_action :set_game, only: [:show, :edit, :update, :destroy, :join, :make_move]
 
   # GET /games
   # GET /games.json
@@ -83,6 +83,21 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html {
         redirect_to lobby_index_url, notice: @notice
+      }
+    end
+  end
+
+  def make_move
+    if @game.user2 != current_user
+      @notice = 'Cannot make moves.'
+    else
+      @move = @game.moves.create(char: params[:char])
+      @notice = 'Move made.'
+    end
+
+    respond_to do |format|
+      format.html {
+        redirect_to game_url(@game), notice: @notice
       }
     end
   end
