@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :statistics
+  get 'lobby' => 'lobby#index', as: :lobby_index
 
-  resources :lobbies
+  resources :statistics
 
   devise_for :users
   root :to => "welcome#index"
