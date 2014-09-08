@@ -11,4 +11,17 @@ class Game < ActiveRecord::Base
     return moves.create(char: char)
   end
 
+  def current_state
+    current = ""
+    current_word = word.word.downcase
+    current_word.length.times do |i|
+      char = current_word[i]
+      if moves.where(char: char).any?
+        current += char
+      else
+        current += "*"
+      end
+    end
+    current
+  end
 end

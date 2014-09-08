@@ -10,6 +10,8 @@
   <dd><%= @game.user2.email if @game.user2 %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @game.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:current_state) %>:</strong></dt>
+  <dd><%= @game.current_state %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
