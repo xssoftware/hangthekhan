@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'lobby' => 'lobby#index', as: :lobby_index
+  get 'games/:id/join' => 'games#join', as: :game_join
 
   resources :statistics
 

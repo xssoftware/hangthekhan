@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_game, only: [:show, :edit, :update, :destroy, :join]
 
   # GET /games
   # GET /games.json
@@ -60,6 +60,21 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to games_url, notice: 'Game was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def join
+    return unless @game.user2.nil?
+    return if @game.user2 == current_user
+
+    @game.user2 = current_user
+
+    respond_to do |format|
+      if @game.save
+        format.html { redirect_to lobby_index_url, notice: 'Game accepted.' }
+      else
+        format.html { redirect_to lobby_index_url, notice: 'Game could not accept.' }
+      end
     end
   end
 

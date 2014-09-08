@@ -1,10 +1,10 @@
 <%- model_class = Game -%>
-<h1>Lobby#index</h1>
-<p>Find me in app/views/lobby/index.html.erb</p>
-
+<div class="page-header">
+  <h1>Lobby</h1>
+</div>
 
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1>Created Games</h1>
 </div>
 <div class="row">
   <div class="span12">
@@ -23,10 +23,44 @@
         <% @created.each do |game| %>
           <tr>
             <td><%= game.user1.email %></td>
-            <th><%= game.user2.email if game.user2 %></th>
-            <th><%= game.word.title %></th>
-            <th><%= game.status %></th>
-            <th><%= game.moves.count %></th>
+            <td><%= game.user2.email if game.user2 %></td>
+            <td><%= game.word.title %></td>
+            <td><%= game.status %></td>
+            <td><%= game.moves.count %></td>
+            <td>
+              <%= link_to "", game_url(game), :metdod => :delete, :class => 'btn btn-danger icon-remove' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>Playing Games</h1>
+</div>
+<div class="row">
+  <div class="span12">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:user1) %></th>
+          <th><%= model_class.human_attribute_name(:user2) %></th>
+          <th><%= model_class.human_attribute_name(:word) %></th>
+          <th><%= model_class.human_attribute_name(:status)%></th>
+          <th><%= model_class.human_attribute_name(:moves_made)%></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @played.each do |game| %>
+          <tr>
+            <td><%= game.user1.email %></td>
+            <td><%= game.user2.email if game.user2 %></td>
+            <td><%= "***" %></td>
+            <td><%= game.status %></td>
+            <td><%= game.moves.count %></td>
             <td>
               <%= link_to "", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
             </td>
@@ -37,14 +71,39 @@
   </div>
 </div>
 
-<h2>Playing</h2>
-<% @played.each do |game| %>
-  <%= game.id %>
-<% end %>
-
-<h2>Open</h2>
-<% @free.each do |game| %>
-  <%= game.id %>
-<% end %>
+<div class="page-header">
+  <h1>Open Games</h1>
+</div>
+<div class="row">
+  <div class="span12">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:user1) %></th>
+          <th><%= model_class.human_attribute_name(:user2) %></th>
+          <th><%= model_class.human_attribute_name(:word) %></th>
+          <th><%= model_class.human_attribute_name(:status)%></th>
+          <th><%= model_class.human_attribute_name(:moves_made)%></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @free.each do |game| %>
+          <tr>
+            <td><%= game.user1.email %></td>
+            <td><%= game.user2.email if game.user2 %></td>
+            <td><%= "***" %></td>
+            <td><%= game.status %></td>
+            <td><%= game.moves.count %></td>
+            <td>
+              <%= link_to "", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
+              <%= link_to "Join Game", game_join_url(game), :class => 'btn-mini' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= link_to "Create Game", new_game_url %>
