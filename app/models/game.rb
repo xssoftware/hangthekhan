@@ -7,4 +7,5 @@ class Game < ActiveRecord::Base
   has_many :moves, dependent: :destroy
   has_one :status, dependent: :destroy
   validates :status, numericality: { only_integer: true }
+  
 end
