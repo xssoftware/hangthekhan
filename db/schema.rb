@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20140905081825) do
   add_index "games", ["user2_id"], name: "index_games_on_user2_id"
   add_index "games", ["word_id"], name: "index_games_on_word_id"
 
+  create_table "lobbies", force: true do |t|
+    t.string   "list"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "moves", force: true do |t|
     t.string   "char"
     t.integer  "game_id"
