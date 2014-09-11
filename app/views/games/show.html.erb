@@ -14,6 +14,8 @@
   <dd><%= @game.current_state %></dd>
 </dl>
 
+
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
               games_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -24,3 +26,48 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 <%= link_to "New Move", new_game_move_url(@game), :class => 'btn btn-default' %>
+
+
+<button type="button" class="btn btn-primary" id="target">Say char</button>
+
+
+
+<script>
+
+$( "#target" ).click(function() {
+
+	$("#myModal").modal({                    // wire up the actual modal functionality and show the dialog
+		  "backdrop"  : "static",
+		  "keyboard"  : true,
+		  "show"      : true                     // ensure the modal is shown immediately
+		});
+		
+});
+
+function test() {
+	var getchar = document.getElementById("getch").value;
+	$("#myModal").modal('hide');
+	var url = "http://" + window.location.host + "/" + window.location.pathname;
+	
+	//alert(url + "/make_move#"+getchar);
+	document.location = url + "/make_move#"+getchar;
+}	
+</script>
+
+<!-- set up the modal to start hidden and fade in and out -->
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- dialog body -->
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        New move
+      </div>
+      <!-- dialog buttons -->
+      <div class="modal-footer">
+	  <input type="text" maxlength="1" class="form-control" placeholder="Charset" id="getch"> <br />
+	  <button type="button" class="btn btn-primary" onclick="test();">Say charset</button>
+	  </div>
+    </div>
+  </div>
+</div>
