@@ -28,7 +28,7 @@
             <td><%= game.status %></td>
             <td><%= game.moves.count %></td>
             <td>
-              <%= link_to "", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
+              <%= link_to "Delete", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
             </td>
           </tr>
         <% end %>
@@ -64,7 +64,7 @@
             <td><%= game.status %></td>
             <td><%= game.moves.count %></td>
             <td>
-              <%= link_to "", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
+              <%= link_to "Delete", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
             </td>
           </tr>
         <% end %>
@@ -98,7 +98,7 @@
             <td><%= game.status %></td>
             <td><%= game.moves.count %></td>
             <td>
-              <%= link_to "", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
+              <%= link_to "Delete", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
               <%= link_to "Join Game", game_join_url(game), :class => 'btn-mini' %>
             </td>
           </tr>
