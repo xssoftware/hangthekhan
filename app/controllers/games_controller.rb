@@ -89,7 +89,19 @@ class GamesController < ApplicationController
 
   def make_move
     @res = @game.make_move(current_user, params[:char])
-    if @res
+    if @res == "Game over"
+      @game.status = 2
+      @game.save
+      redirect_to lobby_index_url, notice: 'You are hung and dead!'
+      return
+    elsif @res == "Letter already used"
+      @notice = 'Move not made. Letter already used. Try another letter.'
+    elsif @res == 'Game won'
+      @game.status = 1
+      @game.save
+      redirect_to lobby_index_url, notice: 'Congratulations. Game won!'
+      return
+    elsif @res
       @notice = 'Move made.'
     else
       @notice = 'Cannot make moves.'

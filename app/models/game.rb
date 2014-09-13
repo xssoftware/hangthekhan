@@ -6,9 +6,24 @@ class Game < ActiveRecord::Base
 
   has_many :moves, dependent: :destroy
 
+  #variables to hold used letters and mistakes
+  $used_letters = ""
+  $mistaken = 0
+
   def make_move(user, char)
     return if user != user2
-    return moves.create(char: char)
+    current_word = word.word.downcase
+    
+    return "Letter already used" if moves.where(char: char).any?
+
+    $mistaken += 1 unless current_word.include? char
+    if $mistaken >= 6
+      return "Game over"
+    elsif !current_state.include? "*"
+      return "Game won"
+    else
+      return moves.create(char: char)
+    end
   end
 
   def current_state
@@ -24,4 +39,9 @@ class Game < ActiveRecord::Base
     end
     current
   end
+
+  def mistakes
+    return $mistaken
+  end
+
 end
