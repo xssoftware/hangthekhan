@@ -96,7 +96,7 @@ class GamesController < ApplicationController
       return
     elsif @res == "Letter already used"
       @notice = 'Move not made. Letter already used. Try another letter.'
-    elsif @res == 'Game won'
+    elsif @res and !@game.current_state.include? "*"
       @game.status = 1
       @game.save
       redirect_to lobby_index_url, notice: 'Congratulations. Game won!'

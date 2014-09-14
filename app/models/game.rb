@@ -12,15 +12,14 @@ class Game < ActiveRecord::Base
 
   def make_move(user, char)
     return if user != user2
+    return if (status == 1) or (status == 2)
     current_word = word.word.downcase
-    
+
     return "Letter already used" if moves.where(char: char).any?
 
     $mistaken += 1 unless current_word.include? char
     if $mistaken >= 6
       return "Game over"
-    elsif !current_state.include? "*"
-      return "Game won"
     else
       return moves.create(char: char)
     end
