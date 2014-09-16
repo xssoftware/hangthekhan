@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
   root :to => "welcome#index"
 
-  resources :games do
+  resources :games, except: [:index, :edit, :update] do
     resources :moves
   end
 
