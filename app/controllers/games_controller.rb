@@ -109,6 +109,13 @@ class GamesController < ApplicationController
       }
     end
   end
+  
+  def can_be_deleted_by?(user)
+    return false if user != user1
+    return false if status != 0
+    return false if user2
+    true
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
