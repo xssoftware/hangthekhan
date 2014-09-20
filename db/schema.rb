@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916160807) do
+ActiveRecord::Schema.define(version: 20140920163612) do
 
   create_table "categories", force: true do |t|
     t.string "name"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20140916160807) do
   add_index "games", ["user2_id"], name: "index_games_on_user2_id"
   add_index "games", ["word_id"], name: "index_games_on_word_id"
 
+  create_table "identities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
   create_table "moves", force: true do |t|
     t.string   "char"
     t.integer  "game_id"
@@ -38,20 +48,6 @@ ActiveRecord::Schema.define(version: 20140916160807) do
   end
 
   add_index "moves", ["game_id"], name: "index_moves_on_game_id"
-
-  create_table "potrebitels", force: true do |t|
-    t.string   "login"
-    t.string   "password"
-    t.string   "email"
-    t.integer  "win"
-    t.integer  "lost"
-    t.integer  "success_cat_id"
-    t.integer  "failure_cat_id"
-    t.string   "time_online"
-    t.integer  "reiting_pos"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -67,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140916160807) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "wins"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

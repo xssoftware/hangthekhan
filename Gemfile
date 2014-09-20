@@ -45,3 +45,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 #gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+

@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   get 'lobby' => 'lobby#index', as: :lobby_index
   get 'games/:id/join' => 'games#join', as: :game_join
   get 'games/:id/make_move' => 'games#make_move'
-
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   resources :statistics
 
-  devise_for :users
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   root :to => "welcome#index"
 
   resources :games, except: [:index, :edit, :update] do
