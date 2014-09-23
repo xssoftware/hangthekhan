@@ -30,12 +30,12 @@
 <button type="button" class="btn btn-primary" id="target">New move</button>
 
 <% ('a'..'z').each do |char| %>
-<а href="#" onclick="char_getter();"><%= char %></a>
+  <a href="#" onclick="char_getter(<% char %>);"><%= char %></a>
 <% end %>
 
 <script>
 
-$( "#target" ).click(function() {
+$("#target").click(function() {
 
 	$("#myModal").modal({                    // wire up the actual modal functionality and show the dialog
 		  "backdrop"  : "static",
@@ -45,13 +45,20 @@ $( "#target" ).click(function() {
 
 });
 
-function char_getter() {
-	var getchar = document.getElementById("getch").value;
-	$("#myModal").modal('hide');
-	var url = "http://" + window.location.host + "/" + window.location.pathname;
+//function getting a char as a parameter
+function char_getter(char) {
+  var url = "http://" + window.location.host + "/" + window.location.pathname;
+	document.location = url + "/make_move?char=" + char;
+}
 
-	//alert(url + "/make_move#"+getchar);
-	document.location = url + "/make_move?char="+getchar;
+//function getting the char from the New Move button window
+function char_asker() {
+  var getchar = document.getElementById("getch").value;
+  $("#myModal").modal('hide');
+  var url = "http://" + window.location.host + "/" + window.location.pathname;
+
+  //alert(url + "/make_move#"+getchar);
+  document.location = url + "/make_move?char=" + getchar;
 }
 </script>
 
@@ -67,7 +74,7 @@ function char_getter() {
       <!-- dialog buttons -->
       <div class="modal-footer">
 	  <input type="text" maxlength="1" class="form-control" placeholder="Charset" id="getch"> <br />
-	  <button type="button" class="btn btn-primary" onclick="char_getter();">OK</button>
+	  <button type="button" class="btn btn-primary" onclick="char_asker();">OK</button>
 	  </div>
     </div>
   </div>
