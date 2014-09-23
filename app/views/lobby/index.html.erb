@@ -16,7 +16,6 @@
           <th><%= model_class.human_attribute_name(:word) %></th>
           <th><%= model_class.human_attribute_name(:status)%></th>
           <th><%= model_class.human_attribute_name(:moves_made)%></th>
-          <th><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
       </thead>
       <tbody>
@@ -27,9 +26,6 @@
             <td><%= game.word.title %></td>
             <td><%= game.status %></td>
             <td><%= game.moves.count %></td>
-            <td>
-              <%= link_to "Delete", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
-            </td>
           </tr>
         <% end %>
       </tbody>
@@ -51,7 +47,6 @@
           <th><%= model_class.human_attribute_name(:word) %></th>
           <th><%= model_class.human_attribute_name(:status)%></th>
           <th><%= model_class.human_attribute_name(:moves_made)%></th>
-          <th><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
       </thead>
       <tbody>
@@ -63,9 +58,6 @@
             <td><%= "***" %></td>
             <td><%= game.status %></td>
             <td><%= game.moves.count %></td>
-            <td>
-              <%= link_to "Delete", game_url(game), :method => :delete, :class => 'btn btn-danger icon-remove' %>
-            </td>
           </tr>
         <% end %>
       </tbody>

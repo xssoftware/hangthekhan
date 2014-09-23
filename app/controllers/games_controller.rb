@@ -54,7 +54,7 @@ class GamesController < ApplicationController
   end
 # GET/PATCH /users/:id/finish_signup
   def finish_signup
-    # authorize! :update, @user 
+    # authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
         @user.skip_reconfirmation!
@@ -121,11 +121,10 @@ class GamesController < ApplicationController
       }
     end
   end
-  
+
   def can_be_deleted_by?(user)
     return false if user != user1
     return false if status != 0
-    return false if user2
     true
   end
 

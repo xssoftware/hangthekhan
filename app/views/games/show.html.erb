@@ -14,6 +14,7 @@
   <dd><%= @game.current_state %></dd>
   <dt><strong><%= model_class.human_attribute_name(:mistakes) %>:</strong></dt>
   <dd><%= @game.mistakes %></dd>
+  <img src= <%="/Hangman#{@game.mistakes}.png"%> height="112" width="72" />
 </dl>
 
 
@@ -25,8 +26,6 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-<%#= link_to "New Move", new_game_move_url(@game), :class => 'btn btn-default' %>
-
 
 <button type="button" class="btn btn-primary" id="target">New move</button>
 
