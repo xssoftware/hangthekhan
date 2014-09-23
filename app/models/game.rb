@@ -16,9 +16,11 @@ class Game < ActiveRecord::Base
     res = moves.create(char: char)
     if mistakes >= 6
       self.status = 2
+      self.user1.increment!(:wins)
       save
     elsif !current_state.include? "*"
       self.status = 1
+      self.user2.increment!(:wins)
       save
     end
     res

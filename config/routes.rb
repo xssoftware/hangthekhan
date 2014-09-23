@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'ranking/index'
+
   get 'lobby' => 'lobby#index', as: :lobby_index
   get 'games/:id/join' => 'games#join', as: :game_join
   get 'games/:id/make_move' => 'games#make_move'

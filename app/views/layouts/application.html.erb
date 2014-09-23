@@ -51,8 +51,7 @@
           <ul class="nav navbar-nav">
             <li><%= link_to "Home", root_url  %></li>
             <li><%= link_to "Lobby", lobby_index_url  %></li>
-            <li><%= link_to "Games", games_url  %></li>
-            <li><%= link_to "Statistics", "/statistics"  %></li>
+            <li><%= link_to "Ranking", ranking_index_url  %></li>
             <li><%= link_to "(#{current_user.email}) Sign out ", '/users/sign_out', :method => :delete if current_user %></li>
           </div>
         </div>
@@ -70,10 +69,9 @@
             <h3>Sidebar</h3>
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Home", "http://localhost:3000/"  %></li>
+              <li><%= link_to "Home", root_url  %></li>
               <li><%= link_to "Lobby", lobby_index_url  %></li>
-              <li><%= link_to "Games", "/games"  %></li>
-              <li><%= link_to "Statistics", "/statistics"  %></li>
+              <li><%= link_to "Ranking", ranking_index_url  %></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
