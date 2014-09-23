@@ -14,7 +14,7 @@
   <dd><%= @game.current_state %></dd>
   <dt><strong><%= model_class.human_attribute_name(:mistakes) %>:</strong></dt>
   <dd><%= @game.mistakes %></dd>
-  <img src= <%="/Hangman#{@game.mistakes}.png"%> height="112" width="72" />
+  <img src= <%="/Hangman#{@game.mistakes}.png"%> height="112" width="92" />
 </dl>
 
 
@@ -29,7 +29,9 @@
 
 <button type="button" class="btn btn-primary" id="target">New move</button>
 
-
+<% ('a'..'z').each do |char| %>
+<а href="#" onclick="char_getter();"><%= char %></a>
+<% end %>
 
 <script>
 
@@ -43,7 +45,7 @@ $( "#target" ).click(function() {
 
 });
 
-function test() {
+function char_getter() {
 	var getchar = document.getElementById("getch").value;
 	$("#myModal").modal('hide');
 	var url = "http://" + window.location.host + "/" + window.location.pathname;
@@ -65,7 +67,7 @@ function test() {
       <!-- dialog buttons -->
       <div class="modal-footer">
 	  <input type="text" maxlength="1" class="form-control" placeholder="Charset" id="getch"> <br />
-	  <button type="button" class="btn btn-primary" onclick="test();">OK</button>
+	  <button type="button" class="btn btn-primary" onclick="char_getter();">OK</button>
 	  </div>
     </div>
   </div>
