@@ -102,10 +102,12 @@ class GamesController < ApplicationController
   def make_move
     @res = @game.make_move(current_user, params[:char])
     if @game.status == 2
-      redirect_to lobby_index_url, notice: 'You are hung and dead!'
+      #redirect_to lobby_index_url, notice: 'You are hung and dead!'
+      redirect_to game_url(@game), notice: 'You are hung and dead!'
       return
     elsif @game.status == 1
-      redirect_to lobby_index_url, notice: 'Congratulations. Game won!'
+      #redirect_to lobby_index_url, notice: 'Congratulations. Game won!'
+      redirect_to game_url(@game), notice: 'Congratulations. Game won!'
       return
     elsif @res == 'Letter already used'
       @notice = 'Move not made. Letter already used. Try another letter.'
