@@ -30,7 +30,7 @@
 <button type="button" class="btn btn-primary" id="target">New move</button>
 
 <% ('a'..'z').each do |char| %>
-  <a href="#" onclick="char_getter(<% char %>);"><%= char %></a>
+  <a href="#" onclick="char_getter('<%= char %>');"><%= char %></a>
 <% end %>
 
 <script>
