@@ -8,13 +8,15 @@
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
+          <th><%= model_class.human_attribute_name(:rank) %></th>
           <th><%= model_class.human_attribute_name(:user) %></th>
           <th><%= model_class.human_attribute_name(:wins) %></th>
         </tr>
       </thead>
       <tbody>
-        <% @ordered.each do |user| %>
+        <% @ordered.each_with_index do |user, index| %>
           <tr>
+            <td><%= index + 1 %></td>
             <td><%= user.email %></td>
             <td><%= user.wins %></td>
           </tr>
