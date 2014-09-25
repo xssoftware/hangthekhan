@@ -52,7 +52,8 @@ class GamesController < ApplicationController
       end
     end
   end
-# GET/PATCH /users/:id/finish_signup
+
+  # GET/PATCH /users/:id/finish_signup
   def finish_signup
     # authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
